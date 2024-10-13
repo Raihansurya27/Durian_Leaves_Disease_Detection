@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Disease Detection</string>
+    <string-array name="delegate_array">
+        <item>CPU</item>
+        <item>GPU</item>
+        <item>NNAPI</item>
+    </string-array>
+    <string-array name="ml_model">
+        <item>MobileNet V1</item>
+        <item>EfficientNet V0</item>
+    </string-array>
+</resources>

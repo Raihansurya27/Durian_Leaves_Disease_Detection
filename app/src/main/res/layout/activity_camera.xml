@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CameraActivity"
+    android:background="@color/black">
+
+    <!--Kamera-->
+    <androidx.camera.view.PreviewView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/camera_view"
+        app:scaleType="fillStart"/>
+
+    <!--Overlay Deteksi-->
+    <com.raihan.diseasedetection.OverlayView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/camera_overlay"/>
+
+    <!--Setting-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settingNavigation"
+        android:layout_below="@id/topNavigation"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:background="#80000000">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
+
+            <TableRow
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:text="Waktu Proses"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:text="139 ms"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:textAlignment="textEnd"
+                    android:id="@+id/inferenceTimeTextView"
+                    android:textColor="@color/white"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:text="Batas Skor Prediksi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"/>
+                <TableLayout
+                    android:stretchColumns="1"
+                    android:layout_weight="1"
+                    android:layout_width="0dp">
+                    <TableRow
+                        android:gravity="center">
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="50dp"
+                            android:background="@drawable/baseline_horizontal_rule_24"
+                            android:id="@+id/thresholdSubstractButton"/>
+                        <TextView
+                            android:text="0.50"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:id="@+id/thresholdTextView"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"/>
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="50dp"
+                            android:background="@drawable/baseline_add_24"
+                            android:id="@+id/thresholdPlusButton"/>
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:text="Jumlah Hasil"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"/>
+                <TableLayout
+                    android:stretchColumns="1"
+                    android:layout_weight="1"
+                    android:layout_width="0dp">
+                    <TableRow
+                        android:gravity="center">
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="50dp"
+                            android:background="@drawable/baseline_horizontal_rule_24"
+                            android:id="@+id/resultSubstractButton"/>
+                        <TextView
+                            android:text="3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:id="@+id/resultTextView"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"/>
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="50dp"
+                            android:background="@drawable/baseline_add_24"
+                            android:id="@+id/resultPlusButton"/>
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+            <TableRow
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:text="Jumlah Threads"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"/>
+                <TableLayout
+                    android:stretchColumns="1"
+                    android:layout_weight="1"
+                    android:layout_width="0dp">
+                    <TableRow
+                        android:gravity="center">
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="50dp"
+                            android:background="@drawable/baseline_horizontal_rule_24"
+                            android:id="@+id/threadsSubstractButton"/>
+                        <TextView
+                            android:text="3"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:id="@+id/threadsTextView"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"/>
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="50dp"
+                            android:background="@drawable/baseline_add_24"
+                            android:id="@+id/threadsPlusButton"/>
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+            <TableRow
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:text="Unit Proses"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:textColor="@color/white"/>
+                <Spinner
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:entries="@array/delegate_array"
+                    android:padding="8dp"
+                    android:id="@+id/delegateSpinner"/>
+            </TableRow>
+            <TableRow
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:text="Model ML"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:textColor="@color/white"/>
+                <Spinner
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:entries="@array/ml_model"
+                    android:padding="8dp"
+                    android:id="@+id/modelSpinner"/>
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+    <!--Top Navigation-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#80000000"
+        android:id="@+id/topNavigation"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/setting_off_new"
+            android:id="@+id/camera_setting_button"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/camera_flash_button"
+            android:background="@drawable/flash_off_new"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="Menghidupkan/mematikan lampu kamera"/>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/camera_detection_button"
+            android:background="@drawable/ai_off_new"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/camera_flash_button"
+            android:contentDescription="Menghidupkan/mematikan deteksi penyakit"/>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/clear_analyze_button"
+            android:layout_toStartOf="@id/camera_detection_button"
+            android:background="@drawable/baseline_cleaning_services_24"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:visibility="gone"
+            android:contentDescription="Menghapus hasil deteksi"/>
+
+    </RelativeLayout>
+
+    <!--Bottom Navigation-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/bottomNavigation"
+        android:layout_alignParentBottom="true"
+        android:background="#80000000">
+
+        <ImageButton
+            android:id="@+id/camera_shot_button"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/capture_new"
+            android:contentDescription="Mengambil gambar" />
+
+    </RelativeLayout>
+
+    <!--Titik Fokus-->
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/focus_point"
+        android:translationX="25dp"
+        android:translationY="25dp"
+        android:id="@+id/focus_position"
+        android:visibility="gone"/>
+
+    <!--Angka Zoom-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_zoom_state"
+        android:text="x1.0"
+        android:textSize="70px"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+    <!--  Overlay Progress bar  -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/overlay_progress_bar"
+        android:background="#7E000000"
+        android:visibility="gone"/>
+
+    <!--  Progress bar  -->
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+        android:id="@+id/camera_progress_bar"
+        android:visibility="gone"/>
+
+</RelativeLayout>
